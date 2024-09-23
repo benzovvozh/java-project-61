@@ -1,16 +1,19 @@
 package hexlet.code;
 
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.GCD;
+
 import java.util.Scanner;
 import java.util.Random;
 
 
 public class Engine {
-    static String userAnswer;
-    static String correctAnswer;
-    static boolean checkAnswer;
-    static int correctAnswerValue = 0;
-    static int sum = 0;
+    public static String userAnswer;
+
+    public static String correctAnswer;
+    public static boolean checkAnswer;
+    public static int correctAnswerValue = 0;
 
 
     public static void incorrectAnswer() {
@@ -20,8 +23,8 @@ public class Engine {
     }
 
     public static int answerCheck() {
-        if ((checkAnswer && userAnswer.equals("yes")) || (sum == Integer.parseInt(userAnswer))
-                || (!checkAnswer && userAnswer.equals("no"))) {
+        if ((checkAnswer && userAnswer.equals("yes")) || (!checkAnswer && userAnswer.equals("no")) //evengame
+                || (userAnswer.equals(String.valueOf(Calc.sum))) || (userAnswer.equals(String.valueOf(GCD.gcdNumber)))) { //calcgame
             System.out.println("Correct!");
             correctAnswerValue++;
         } else {
@@ -29,58 +32,6 @@ public class Engine {
         }
 
         return correctAnswerValue;
-    }
-
-    public static void evenGame() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        while (correctAnswerValue < 3) {
-            int randomNumber = random.nextInt(100) + 1;
-            System.out.println("Question: " + randomNumber);
-            if (randomNumber % 2 == 0) {
-                checkAnswer = true;
-                correctAnswer = "yes";
-            } else {
-                checkAnswer = false;
-                correctAnswer = "no";
-            }
-            System.out.print("Your answer: ");
-            userAnswer = scanner.next();
-            answerCheck();
-        }
-        if (correctAnswerValue == 3) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
-    }
-
-    public static void calcGame() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        while (correctAnswerValue < 3) {
-            int randomNumber = random.nextInt(100) + 1;
-            int randomNumber2 = random.nextInt(100) + 1;
-            if (correctAnswerValue == 0) {
-                sum = randomNumber + randomNumber2;
-                correctAnswer = String.valueOf(sum);
-                System.out.println("Question: " + randomNumber + " + " + randomNumber2);
-            } else if (correctAnswerValue == 1) {
-                sum = randomNumber - randomNumber2;
-                correctAnswer = String.valueOf(sum);
-                System.out.println("Question: " + randomNumber + " - " + randomNumber2);
-            } else if (correctAnswerValue == 2) {
-                sum = randomNumber * randomNumber2;
-                correctAnswer = String.valueOf(sum);
-                System.out.println("Question: " + randomNumber + " * " + randomNumber2);
-            }
-
-
-            System.out.print("Your answer: ");
-            userAnswer = scanner.next();
-            answerCheck();
-        }
-        if (correctAnswerValue == 3) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
     }
 
 
