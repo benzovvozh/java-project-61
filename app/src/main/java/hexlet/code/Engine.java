@@ -4,9 +4,6 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 
-import java.util.Scanner;
-import java.util.Random;
-
 
 public class Engine {
     public static String userAnswer;
@@ -23,8 +20,11 @@ public class Engine {
     }
 
     public static int answerCheck() {
-        if ((checkAnswer && userAnswer.equals("yes")) || (!checkAnswer && userAnswer.equals("no")) //evengame
-                || (userAnswer.equals(String.valueOf(Calc.sum))) || (userAnswer.equals(String.valueOf(GCD.gcdNumber)))) { //calcgame
+        if ((checkAnswer && userAnswer.equals("yes")) //evengame
+                || (!checkAnswer && userAnswer.equals("no"))
+                || (userAnswer.equals(String.valueOf(Calc.sum))) //calcgame
+                || (userAnswer.equals(String.valueOf(GCD.gcdNumber)))
+                || (userAnswer.equals(correctAnswer))) { // progressiongame
             System.out.println("Correct!");
             correctAnswerValue++;
         } else {

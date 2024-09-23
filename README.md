@@ -7,3 +7,5 @@ Calc game:
 [![asciicast](https://asciinema.org/a/fij8pnHtjrnpVzcRO9qUXE2Hp.svg)](https://asciinema.org/a/fij8pnHtjrnpVzcRO9qUXE2Hp?autoplay=true)  
 GCD game:  
 [![asciicast](https://asciinema.org/a/akxnOSoc5YFbhsNv2MBwCSjB4.svg)](https://asciinema.org/a/akxnOSoc5YFbhsNv2MBwCSjB4?autoplay=true)  
+Progression game:  
+[![asciicast](https://asciinema.org/a/lylZ2gXTGYWsW3qUnGhAV6ob9.svg)](https://asciinema.org/a/lylZ2gXTGYWsW3qUnGhAV6ob9?autoplay=true)   
