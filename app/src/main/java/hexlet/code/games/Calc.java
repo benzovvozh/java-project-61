@@ -8,7 +8,12 @@ import java.util.Scanner;
 
 
 public class Calc {
-    public static int sum = 0;
+    public static int getSum() {
+        return sum;
+    }
+
+
+    private static int sum = 0;
 
     public static void calcGame() {
         Scanner scanner = new Scanner(System.in);

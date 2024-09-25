@@ -2,13 +2,15 @@ package hexlet.code;
 
 import hexlet.code.games.*;
 
-import javax.swing.plaf.synth.SynthUI;
+
 import java.util.Scanner;
 
 public class App {
 
 
-    static String userChoice;
+    private static String userChoice;
+
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -49,6 +51,7 @@ public class App {
             case "0":
                 System.exit(0);
                 break;
+            default:
 
         }
     }

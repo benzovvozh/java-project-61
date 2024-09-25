@@ -14,7 +14,7 @@ public class Prime {
         while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
             int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
             System.out.println("Question: " + randomNumber);
-            if (isPrime(randomNumber) == true) {
+            if (isPrime(randomNumber)) {
                 Engine.setCheckAnswer(true);
                 Engine.setCorrectAnswer("yes");
             } else {

@@ -7,7 +7,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GCD {
-    public static int gcdNumber = 0;
+    public static int getGcdNumber() {
+        return gcdNumber;
+    }
+
+    public static void setGcdNumber(int gcdNumber) {
+        GCD.gcdNumber = gcdNumber;
+    }
+
+    private static int gcdNumber = 0;
 
     public static int findGCD(int a, int b) {
         while (b != 0) {

@@ -9,6 +9,10 @@ import java.util.Scanner;
 
 public class Progression {
     private static int[] progressionArray;
+    private static int minProgressionLength = 5;
+    private static int maxProgressionLength = 10;
+
+
 
     public static String arithmeticProgression(int length, int start, int step, int miss) {
         String progression; // переменная в которой будет храниться строковое представление прогрессии
@@ -42,11 +46,11 @@ public class Progression {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("What number is missing in the progression?");
-        int minProgressionLength = 5;
-        int maxProgressionLength = 10;
+
 
         while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
-            int progressionLength = random.nextInt(minProgressionLength, maxProgressionLength) + 1; //случайная длина прогрессии от 5 до 10
+            //случайная длина прогрессии от 5 до 10
+            int progressionLength = random.nextInt(minProgressionLength, maxProgressionLength) + 1;
             int startNumber = random.nextInt(10) + 1; //случайное стартовое число
             int progressionStep = random.nextInt(10) + 1; //случайное число - шаг прогрессии
             int missingValue = random.nextInt(progressionLength); // номер пропущенного значения

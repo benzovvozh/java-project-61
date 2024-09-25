@@ -7,14 +7,14 @@ import hexlet.code.games.GCD;
 
 public class Engine {
     public static int getMaxRound() {
-        return maxRound;
+        return MAXROUND;
     }
 
-    private static final int maxRound = 3;
-    private static final int maxRandomNumber = 100;
+    private static final int MAXROUND = 3;
+    private static final int MAXRANDOMNUMBER = 100;
 
     public static int getMaxRandomNumber() {
-        return maxRandomNumber;
+        return MAXRANDOMNUMBER;
     }
 
     private static String userAnswer;
@@ -58,8 +58,8 @@ public class Engine {
     public static int answerCheck() {
         if ((checkAnswer && userAnswer.equals("yes")) //evengame
                 || (!checkAnswer && userAnswer.equals("no"))
-                || (userAnswer.equals(String.valueOf(Calc.sum))) //calcgame
-                || (userAnswer.equals(String.valueOf(GCD.gcdNumber)))
+                || (userAnswer.equals(String.valueOf(Calc.getSum()))) //calcgame
+                || (userAnswer.equals(String.valueOf(GCD.getGcdNumber())))
                 || (userAnswer.equals(correctAnswer))) { // progressiongame
             System.out.println("Correct!");
             correctAnswerValue++;
