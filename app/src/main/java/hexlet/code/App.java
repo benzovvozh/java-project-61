@@ -22,7 +22,6 @@ public class App {
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
         userChoice = scanner.next();
-        System.out.println("Welcome to the Brain Games!");
         switch (userChoice) {
             case "1":
                 Cli.greeting();
