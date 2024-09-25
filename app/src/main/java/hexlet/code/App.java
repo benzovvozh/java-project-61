@@ -1,10 +1,8 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
-import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
-import hexlet.code.games.Progression;
+import hexlet.code.games.*;
 
+import javax.swing.plaf.synth.SynthUI;
 import java.util.Scanner;
 
 public class App {
@@ -20,6 +18,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
         userChoice = scanner.next();
@@ -42,6 +41,11 @@ public class App {
             case "5":
                 Cli.greeting();
                 Progression.progressionGame();
+            case "6":
+                Cli.greeting();
+                Prime.primeGame();
+            case "0":
+                System.exit(0);
 
         }
     }

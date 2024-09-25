@@ -9,3 +9,5 @@ GCD game:
 [![asciicast](https://asciinema.org/a/akxnOSoc5YFbhsNv2MBwCSjB4.svg)](https://asciinema.org/a/akxnOSoc5YFbhsNv2MBwCSjB4?autoplay=true)  
 Progression game:  
 [![asciicast](https://asciinema.org/a/lylZ2gXTGYWsW3qUnGhAV6ob9.svg)](https://asciinema.org/a/lylZ2gXTGYWsW3qUnGhAV6ob9?autoplay=true)   
+Prime game:  
+[![asciicast](https://asciinema.org/a/A7xkUM64nJOe38jpW4fIm1AW2.svg)](https://asciinema.org/a/A7xkUM64nJOe38jpW4fIm1AW2?autoplay=true) 
