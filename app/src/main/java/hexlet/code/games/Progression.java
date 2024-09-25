@@ -11,6 +11,7 @@ public class Progression {
     private static int[] progressionArray;
     private static final int MINPROGRESSIONLENGTH = 5;
     private static final int MAXPROGRESSIONLENGTH = 10;
+    private static final int TEN = 10; // для обозначения шага и стартового числа
 
 
 
@@ -51,8 +52,8 @@ public class Progression {
         while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
             //случайная длина прогрессии от 5 до 10
             int progressionLength = random.nextInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH) + 1;
-            int startNumber = random.nextInt(10) + 1; //случайное стартовое число
-            int progressionStep = random.nextInt(10) + 1; //случайное число - шаг прогрессии
+            int startNumber = random.nextInt(TEN) + 1; //случайное стартовое число
+            int progressionStep = random.nextInt(TEN) + 1; //случайное число - шаг прогрессии
             int missingValue = random.nextInt(progressionLength); // номер пропущенного значения
 
             String some = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
