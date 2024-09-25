@@ -38,14 +38,18 @@ public class App {
             case "4":
                 Cli.greeting();
                 GCD.gcdGame();
+                break;
             case "5":
                 Cli.greeting();
                 Progression.progressionGame();
+                break;
             case "6":
                 Cli.greeting();
                 Prime.primeGame();
+                break;
             case "0":
                 System.exit(0);
+                break;
 
         }
     }
