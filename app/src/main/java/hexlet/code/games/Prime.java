@@ -10,7 +10,7 @@ public class Prime {
     public static void primeGame() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'");
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         while (Engine.correctAnswerValue < 3) {
             int randomNumber = random.nextInt(100) + 1;
             System.out.println("Question: " + randomNumber);
