@@ -25,25 +25,25 @@ public class GCD {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("Find the greatest common divisor of given numbers.");
-        while (Engine.correctAnswerValue < 3) {
-            int randomNumber = random.nextInt(100) + 1;
-            int randomNumber2 = random.nextInt(100) + 1;
+        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            int randomNumber2 = random.nextInt(Engine.getMaxRandomNumber()) + 1;
             gcdNumber = findGCD(randomNumber, randomNumber2);
-            if (Engine.correctAnswerValue == 0) {
-                Engine.correctAnswer = String.valueOf(gcdNumber);
+            if (Engine.getCorrectAnswerValue() == 0) {
+                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
                 System.out.println("Question: " + randomNumber + " " + randomNumber2);
-            } else if (Engine.correctAnswerValue == 1) {
-                Engine.correctAnswer = String.valueOf(gcdNumber);
+            } else if (Engine.getCorrectAnswerValue() == 1) {
+                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
                 System.out.println("Question: " + randomNumber + " " + randomNumber2);
-            } else if (Engine.correctAnswerValue == 2) {
-                Engine.correctAnswer = String.valueOf(gcdNumber);
+            } else if (Engine.getCorrectAnswerValue() == 2) {
+                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
                 System.out.println("Question: " + randomNumber + " " + randomNumber2);
             }
             System.out.print("Your answer: ");
-            Engine.userAnswer = scanner.next();
+            Engine.setUserAnswer(scanner.next());
             Engine.answerCheck();
         }
-        if (Engine.correctAnswerValue == 3) {
+        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }

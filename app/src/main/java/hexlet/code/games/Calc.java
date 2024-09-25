@@ -14,29 +14,29 @@ public class Calc {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("What is the result of the expression?");
-        while (Engine.correctAnswerValue < 3) {
-            int randomNumber = random.nextInt(100) + 1;
-            int randomNumber2 = random.nextInt(100) + 1;
-            if (Engine.correctAnswerValue == 0) {
+        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            int randomNumber2 = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            if (Engine.getCorrectAnswerValue() == 0) {
                 sum = randomNumber + randomNumber2;
-                Engine.correctAnswer = String.valueOf(sum);
+                Engine.setCorrectAnswer(String.valueOf(sum));
                 System.out.println("Question: " + randomNumber + " + " + randomNumber2);
-            } else if (Engine.correctAnswerValue == 1) {
+            } else if (Engine.getCorrectAnswerValue() == 1) {
                 sum = randomNumber - randomNumber2;
-                Engine.correctAnswer = String.valueOf(sum);
+                Engine.setCorrectAnswer(String.valueOf(sum));
                 System.out.println("Question: " + randomNumber + " - " + randomNumber2);
-            } else if (Engine.correctAnswerValue == 2) {
+            } else if (Engine.getCorrectAnswerValue() == 2) {
                 sum = randomNumber * randomNumber2;
-                Engine.correctAnswer = String.valueOf(sum);
+                Engine.setCorrectAnswer(String.valueOf(sum));
                 System.out.println("Question: " + randomNumber + " * " + randomNumber2);
             }
 
 
             System.out.print("Your answer: ");
-            Engine.userAnswer = scanner.next();
+            Engine.setUserAnswer(scanner.next());
             Engine.answerCheck();
         }
-        if (Engine.correctAnswerValue == 3) {
+        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }

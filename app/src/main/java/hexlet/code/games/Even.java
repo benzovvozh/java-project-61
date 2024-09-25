@@ -15,21 +15,21 @@ public class Even {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (Engine.correctAnswerValue < 3) {
-            int randomNumber = random.nextInt(100) + 1;
+        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
             System.out.println("Question: " + randomNumber);
             if (randomNumber % 2 == 0) {
-                Engine.checkAnswer = true;
-                Engine.correctAnswer = "yes";
+                Engine.setCheckAnswer(true);
+                Engine.setCorrectAnswer("yes");
             } else {
-                Engine.checkAnswer = false;
-                Engine.correctAnswer = "no";
+                Engine.setCheckAnswer(false);
+                Engine.setCorrectAnswer("no");
             }
             System.out.print("Your answer: ");
-            Engine.userAnswer = scanner.next();
+            Engine.setUserAnswer(scanner.next());
             Engine.answerCheck();
         }
-        if (Engine.correctAnswerValue == 3) {
+        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }

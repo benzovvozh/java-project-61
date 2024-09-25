@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Progression {
-    public static int[] progressionArray;
+    private static int[] progressionArray;
 
     public static String arithmeticProgression(int length, int start, int step, int miss) {
         String progression; // переменная в которой будет храниться строковое представление прогрессии
@@ -42,23 +42,25 @@ public class Progression {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("What number is missing in the progression?");
+        int minProgressionLength = 5;
+        int maxProgressionLength = 10;
 
-        while (Engine.correctAnswerValue < 3) {
-            int progressionLength = random.nextInt(5, 10) + 1; //случайная длина прогрессии от 5 до 10
+        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+            int progressionLength = random.nextInt(minProgressionLength, maxProgressionLength) + 1; //случайная длина прогрессии от 5 до 10
             int startNumber = random.nextInt(10) + 1; //случайное стартовое число
             int progressionStep = random.nextInt(10) + 1; //случайное число - шаг прогрессии
             int missingValue = random.nextInt(progressionLength); // номер пропущенного значения
 
             String some = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
-            Engine.correctAnswer = String.valueOf(progressionArray[missingValue]); // задаем правильный ответ
+            Engine.setCorrectAnswer(String.valueOf(progressionArray[missingValue])); // задаем правильный ответ
             System.out.println("Question: " + some);
 
 
             System.out.print("Your answer: ");
-            Engine.userAnswer = scanner.next();
+            Engine.setUserAnswer(scanner.next());
             Engine.answerCheck();
         }
-        if (Engine.correctAnswerValue == 3) {
+        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
 

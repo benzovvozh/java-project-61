@@ -7,7 +7,7 @@ public class Cli {
         return userName;
     }
 
-    static String userName;
+    private static String userName;
 
     public static void greeting() {
         Scanner scanner = new Scanner(System.in);

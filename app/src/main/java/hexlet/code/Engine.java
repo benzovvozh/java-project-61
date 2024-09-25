@@ -6,11 +6,47 @@ import hexlet.code.games.GCD;
 
 
 public class Engine {
-    public static String userAnswer;
+    public static int getMaxRound() {
+        return maxRound;
+    }
 
-    public static String correctAnswer;
-    public static boolean checkAnswer;
-    public static int correctAnswerValue = 0;
+    private static final int maxRound = 3;
+    private static final int maxRandomNumber = 100;
+
+    public static int getMaxRandomNumber() {
+        return maxRandomNumber;
+    }
+
+    private static String userAnswer;
+
+
+
+
+
+
+
+    public static int getCorrectAnswerValue() {
+        return correctAnswerValue;
+    }
+
+    private static String correctAnswer;
+
+    public static void setUserAnswer(String userAnswer) {
+        Engine.userAnswer = userAnswer;
+    }
+
+    public static void setCorrectAnswer(String correctAnswer) {
+        Engine.correctAnswer = correctAnswer;
+    }
+
+    public static void setCheckAnswer(boolean checkAnswer) {
+        Engine.checkAnswer = checkAnswer;
+    }
+
+
+
+    private static boolean checkAnswer;
+    private static int correctAnswerValue = 0;
 
 
     public static void incorrectAnswer() {
