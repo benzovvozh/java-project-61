@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class Progression {
     private static int[] progressionArray;
-    private static int minProgressionLength = 5;
-    private static int maxProgressionLength = 10;
+    private static final int MINPROGRESSIONLENGTH = 5;
+    private static final int MAXPROGRESSIONLENGTH = 10;
 
 
 
@@ -50,7 +50,7 @@ public class Progression {
 
         while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
             //случайная длина прогрессии от 5 до 10
-            int progressionLength = random.nextInt(minProgressionLength, maxProgressionLength) + 1;
+            int progressionLength = random.nextInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH) + 1;
             int startNumber = random.nextInt(10) + 1; //случайное стартовое число
             int progressionStep = random.nextInt(10) + 1; //случайное число - шаг прогрессии
             int missingValue = random.nextInt(progressionLength); // номер пропущенного значения

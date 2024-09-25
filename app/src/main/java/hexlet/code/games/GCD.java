@@ -11,9 +11,7 @@ public class GCD {
         return gcdNumber;
     }
 
-    public static void setGcdNumber(int gcdNumber) {
-        GCD.gcdNumber = gcdNumber;
-    }
+
 
     private static int gcdNumber = 0;
 
