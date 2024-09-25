@@ -34,6 +34,7 @@ public class Progression {
         progression = Arrays.toString(stringArray);
         // избавляемся от скобок
         progression = progression.replaceAll("\\[", "").replaceAll("\\]", "");
+        progression = progression.replaceAll(",", "");
         return progression;
     }
 
