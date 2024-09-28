@@ -16,7 +16,7 @@ public class Engine {
         return MAXRANDOMNUMBER;
     }
 
-    private static String userAnswer;
+    private static String AnswerUser;
 
 
     public static int getCorrectAnswerValue() {
@@ -31,14 +31,14 @@ public class Engine {
     private static String correctAnswer;
 
     public static void setUserAnswer(String userAnswer) {
-        Engine.userAnswer = userAnswer;
+        Engine.AnswerUser = userAnswer;
     }
 
-    public static void setCorrectAnswer(String correctAnswer) {
+    public static void theCorrectAnswer(String correctAnswer) {
         Engine.correctAnswer = correctAnswer;
     }
 
-    public static void setCheckAnswer(boolean checkAnswer) {
+    public static void theCheckAnswer(boolean checkAnswer) {
         Engine.checkAnswer = checkAnswer;
     }
 
@@ -52,16 +52,16 @@ public class Engine {
     private static int correctAnswerValue = 0;
 
     public static void incorrectAnswer() {
-        System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
+        System.out.println(AnswerUser + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
         System.out.println("Let's try again, " + Cli.getUserName() + "!");
         System.exit(0);
     }
 
     public static int answerCheck() {
-        if ((checkAnswer && userAnswer.equals("yes")) || (!checkAnswer && userAnswer.equals("no")) // even/prime game
-                || (userAnswer.equals(getCorrectAnswer())) // calc game
-                || (userAnswer.equals(String.valueOf(getCorrectAnswer()))) // gcd game
-                || (userAnswer.equals(getCorrectAnswer()))) { // progression game
+        if ((checkAnswer && AnswerUser.equals("yes")) || (!checkAnswer && AnswerUser.equals("no")) // even/prime game
+                || (AnswerUser.equals(getCorrectAnswer())) // calc/progression game
+                || (AnswerUser.equals(String.valueOf(getCorrectAnswer())))) // gcd game
+        {
             System.out.println("Correct!");
             correctAnswerValue++;
         } else {
