@@ -7,11 +7,11 @@ import java.util.Random;
 public class Even {
     public static boolean isEven(int randomNumber) {
         if (randomNumber % 2 == 0) {
-            Engine.theCheckAnswer(true);
-            Engine.theCorrectAnswer("yes");
+            Engine.setCheckAnswer(true);
+            Engine.setCorrectAnswer("yes");
         } else {
-            Engine.theCheckAnswer(false);
-            Engine.theCorrectAnswer("no");
+            Engine.setCheckAnswer(false);
+            Engine.setCorrectAnswer("no");
         }
         return Engine.isCheckAnswer();
     }

@@ -16,7 +16,7 @@ public class Engine {
         return MAXRANDOMNUMBER;
     }
 
-    private static String AnswerUser;
+    private static String answerUser;
 
 
     public static int getCorrectAnswerValue() {
@@ -31,14 +31,14 @@ public class Engine {
     private static String correctAnswer;
 
     public static void setUserAnswer(String userAnswer) {
-        Engine.AnswerUser = userAnswer;
+        Engine.answerUser = userAnswer;
     }
 
-    public static void theCorrectAnswer(String correctAnswer) {
+    public static void setCorrectAnswer(String theCorrectAnswer) {
         Engine.correctAnswer = correctAnswer;
     }
 
-    public static void theCheckAnswer(boolean checkAnswer) {
+    public static void setCheckAnswer(boolean theCheckAnswer) {
         Engine.checkAnswer = checkAnswer;
     }
 
@@ -52,16 +52,15 @@ public class Engine {
     private static int correctAnswerValue = 0;
 
     public static void incorrectAnswer() {
-        System.out.println(AnswerUser + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
+        System.out.println(answerUser + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
         System.out.println("Let's try again, " + Cli.getUserName() + "!");
         System.exit(0);
     }
 
     public static int answerCheck() {
-        if ((checkAnswer && AnswerUser.equals("yes")) || (!checkAnswer && AnswerUser.equals("no")) // even/prime game
-                || (AnswerUser.equals(getCorrectAnswer())) // calc/progression game
-                || (AnswerUser.equals(String.valueOf(getCorrectAnswer())))) // gcd game
-        {
+        if ((checkAnswer && answerUser.equals("yes")) || (!checkAnswer && answerUser.equals("no")) // even/prime game
+                || (answerUser.equals(getCorrectAnswer())) // calc/progression game
+                || (answerUser.equals(String.valueOf(getCorrectAnswer())))) { // gcd game
             System.out.println("Correct!");
             correctAnswerValue++;
         } else {
