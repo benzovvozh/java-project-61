@@ -1,35 +1,10 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class Prime {
-    public static void primeGame() {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
-            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
-            System.out.println("Question: " + randomNumber);
-            if (isPrime(randomNumber)) {
-                Engine.setCheckAnswer(true);
-                Engine.setCorrectAnswer("yes");
-            } else {
-                Engine.setCheckAnswer(false);
-                Engine.setCorrectAnswer("no");
-            }
-            System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
-            Engine.answerCheck();
-        }
-        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
-    }
-
     public static boolean isPrime(int number) {
         if (number < 2) {
             return false;
@@ -44,4 +19,26 @@ public class Prime {
         }
         return true;
     }
+
+
+    public static void primeGame() {
+        Random random = new Random();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        String[] questions = new String[Engine.getMaxRound()];
+        for (int i = 0; i < Engine.getMaxRound(); i++) {
+            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            questions[i] = String.valueOf(randomNumber);
+        }
+        boolean[] answers = new boolean[Engine.getMaxRound()];
+        for (int i = 0; i < Engine.getMaxRound(); i++) {
+            if (isPrime(Integer.parseInt(questions[i]))) {
+                answers[i] = true;
+            } else {
+                answers[i] = false;
+            }
+        }
+        Engine.theGame(questions, answers);
+    }
+
+
 }

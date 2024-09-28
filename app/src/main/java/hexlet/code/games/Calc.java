@@ -1,49 +1,55 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
 
 public class Calc {
-    public static int getSum() {
-        return sum;
+
+
+    public static int result(int number1, int number2, int step) {
+        if (step == 0) {
+            return number1 + number2;
+        } else if (step == 1) {
+            return number1 - number2;
+        } else {
+            return number1 * number2;
+        }
     }
 
-
-    private static int sum = 0;
-
     public static void calcGame() {
-        Scanner scanner = new Scanner(System.in);
+
         Random random = new Random();
         System.out.println("What is the result of the expression?");
-        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+
+
+        // создаем массив вопросов
+        String[] questions = new String[Engine.getMaxRound()];
+        // массив ответов
+        String[] answers = new String[Engine.getMaxRound()];
+        int x = 0;
+        while (x < Engine.getMaxRound()) {
+
+            // создаем 2 случайных числа
             int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
             int randomNumber2 = random.nextInt(Engine.getMaxRandomNumber()) + 1;
-            if (Engine.getCorrectAnswerValue() == 0) {
-                sum = randomNumber + randomNumber2;
-                Engine.setCorrectAnswer(String.valueOf(sum));
-                System.out.println("Question: " + randomNumber + " + " + randomNumber2);
-            } else if (Engine.getCorrectAnswerValue() == 1) {
-                sum = randomNumber - randomNumber2;
-                Engine.setCorrectAnswer(String.valueOf(sum));
-                System.out.println("Question: " + randomNumber + " - " + randomNumber2);
-            } else if (Engine.getCorrectAnswerValue() == 2) {
-                sum = randomNumber * randomNumber2;
-                Engine.setCorrectAnswer(String.valueOf(sum));
-                System.out.println("Question: " + randomNumber + " * " + randomNumber2);
+
+            // записываем вопросы в массив вопросов и записываем правильные ответы
+            if (x == 0) {
+                answers[0] = String.valueOf(result(randomNumber, randomNumber2, x));
+                questions[0] = randomNumber + " + " + randomNumber2;
+            } else if (x == 1) {
+                answers[1] = String.valueOf(result(randomNumber, randomNumber2, x));
+                questions[1] = randomNumber + " - " + randomNumber2;
+            } else if (x == 2) {
+                answers[2] = String.valueOf(result(randomNumber, randomNumber2, x));
+                questions[2] = randomNumber + " * " + randomNumber2;
             }
-
-
-            System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
-            Engine.answerCheck();
+            x++;
         }
-        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
+        Engine.theGame(questions, answers);
+
     }
 
 }

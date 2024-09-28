@@ -1,18 +1,15 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class Progression {
     private static int[] progressionArray;
     private static final int MINPROGRESSIONLENGTH = 5;
     private static final int MAXPROGRESSIONLENGTH = 10;
     private static final int TEN = 10; // для обозначения шага и стартового числа
-
 
 
     public static String arithmeticProgression(int length, int start, int step, int miss) {
@@ -43,32 +40,23 @@ public class Progression {
         return progression;
     }
 
+
     public static void progressionGame() {
-        Scanner scanner = new Scanner(System.in);
+
         Random random = new Random();
         System.out.println("What number is missing in the progression?");
-
-
-        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+        String[] questions = new String[Engine.getMaxRound()];
+        String[] answers = new String[Engine.getMaxRound()];
+        for (int i = 0; i < Engine.getMaxRound(); i++) {
             //случайная длина прогрессии от 5 до 10
             int progressionLength = random.nextInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH) + 1;
             int startNumber = random.nextInt(TEN) + 1; //случайное стартовое число
             int progressionStep = random.nextInt(TEN) + 1; //случайное число - шаг прогрессии
             int missingValue = random.nextInt(progressionLength); // номер пропущенного значения
-
-            String some = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
-            Engine.setCorrectAnswer(String.valueOf(progressionArray[missingValue])); // задаем правильный ответ
-            System.out.println("Question: " + some);
-
-
-            System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
-            Engine.answerCheck();
+            questions[i] = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
+            answers[i] = String.valueOf(progressionArray[missingValue]);
         }
-        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
-
+        Engine.theGame(questions, answers);
     }
 
 }

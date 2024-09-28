@@ -1,19 +1,11 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
-
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class GCD {
-    public static int getGcdNumber() {
-        return gcdNumber;
-    }
 
-
-
-    private static int gcdNumber = 0;
 
     public static int findGCD(int a, int b) {
         while (b != 0) {
@@ -27,31 +19,20 @@ public class GCD {
         return a;
     }
 
+
     public static void gcdGame() {
-        Scanner scanner = new Scanner(System.in);
+
         Random random = new Random();
         System.out.println("Find the greatest common divisor of given numbers.");
-        while (Engine.getCorrectAnswerValue() < Engine.getMaxRound()) {
+        String[] questions = new String[Engine.getMaxRound()];
+        String[] answers = new String[Engine.getMaxRound()];
+        for (int i = 0; i < Engine.getMaxRound(); i++) {
             int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
             int randomNumber2 = random.nextInt(Engine.getMaxRandomNumber()) + 1;
-            gcdNumber = findGCD(randomNumber, randomNumber2);
-            if (Engine.getCorrectAnswerValue() == 0) {
-                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
-                System.out.println("Question: " + randomNumber + " " + randomNumber2);
-            } else if (Engine.getCorrectAnswerValue() == 1) {
-                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
-                System.out.println("Question: " + randomNumber + " " + randomNumber2);
-            } else if (Engine.getCorrectAnswerValue() == 2) {
-                Engine.setCorrectAnswer(String.valueOf(gcdNumber));
-                System.out.println("Question: " + randomNumber + " " + randomNumber2);
-            }
-            System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
-            Engine.answerCheck();
+            questions[i] = randomNumber + " " + randomNumber2;
+            answers[i] = String.valueOf(findGCD(randomNumber, randomNumber2));
         }
-        if (Engine.getCorrectAnswerValue() == Engine.getMaxRound()) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
+        Engine.theGame(questions, answers);
     }
 }
 

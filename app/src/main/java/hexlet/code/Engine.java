@@ -1,8 +1,7 @@
 package hexlet.code;
 
-
-import hexlet.code.games.Calc;
-import hexlet.code.games.GCD;
+import java.util.Random;
+import java.util.Scanner;
 
 
 public class Engine {
@@ -20,13 +19,13 @@ public class Engine {
     private static String userAnswer;
 
 
-
-
-
-
-
     public static int getCorrectAnswerValue() {
         return correctAnswerValue;
+    }
+
+
+    public static String getCorrectAnswer() {
+        return correctAnswer;
     }
 
     private static String correctAnswer;
@@ -44,10 +43,13 @@ public class Engine {
     }
 
 
-
     private static boolean checkAnswer;
-    private static int correctAnswerValue = 0;
 
+    public static boolean isCheckAnswer() {
+        return checkAnswer;
+    }
+
+    private static int correctAnswerValue = 0;
 
     public static void incorrectAnswer() {
         System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
@@ -56,11 +58,10 @@ public class Engine {
     }
 
     public static int answerCheck() {
-        if ((checkAnswer && userAnswer.equals("yes")) //evengame
-                || (!checkAnswer && userAnswer.equals("no"))
-                || (userAnswer.equals(String.valueOf(Calc.getSum()))) //calcgame
-                || (userAnswer.equals(String.valueOf(GCD.getGcdNumber())))
-                || (userAnswer.equals(correctAnswer))) { // progressiongame
+        if ((checkAnswer && userAnswer.equals("yes")) || (!checkAnswer && userAnswer.equals("no")) // even/prime game
+                || (userAnswer.equals(getCorrectAnswer())) // calc game
+                || (userAnswer.equals(String.valueOf(getCorrectAnswer()))) // gcd game
+                || (userAnswer.equals(getCorrectAnswer()))) { // progression game
             System.out.println("Correct!");
             correctAnswerValue++;
         } else {
@@ -68,6 +69,45 @@ public class Engine {
         }
 
         return correctAnswerValue;
+    }
+
+
+    public static void theGame(String[] questions, boolean[] answers) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        while (getCorrectAnswerValue() < getMaxRound()) {
+
+            System.out.println("Question: " + questions[getCorrectAnswerValue()]);
+
+            System.out.print("Your answer: ");
+            Engine.setUserAnswer(scanner.next());
+            // ПРОВЕРКА
+            checkAnswer = answers[getCorrectAnswerValue()];
+            answerCheck();
+
+        }
+        if (getCorrectAnswerValue() == getMaxRound()) {
+            System.out.println("Congratulations, " + Cli.getUserName() + "!");
+        }
+    }
+
+    public static void theGame(String[] questions, String[] answers) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        while (getCorrectAnswerValue() < getMaxRound()) {
+
+            System.out.println("Question: " + questions[getCorrectAnswerValue()]);
+
+            System.out.print("Your answer: ");
+            Engine.setUserAnswer(scanner.next());
+            // ПРОВЕРКА
+            correctAnswer = answers[getCorrectAnswerValue()];
+            answerCheck();
+
+        }
+        if (getCorrectAnswerValue() == getMaxRound()) {
+            System.out.println("Congratulations, " + Cli.getUserName() + "!");
+        }
     }
 
 
