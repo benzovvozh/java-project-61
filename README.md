@@ -6,7 +6,7 @@ How to play:
 First you need to choose the game number. After this game will start.  
 Each game has 3 rounds, if you answer correct - go to the next round, else if you answer wrong - game over.  
 Even game:  
-[![asciicast](https://asciinema.org/a/hsebzSoCje1cVyzTsMchX0H3J.svg)](https://asciinema.org/a/hsebzSoCje1cVyzTsMchX0H3J?autoplay=true)  
+[![asciicast](https://asciinema.org/a/Wd4DB0E9J6AFjqQoPGTkkP9xv.svg)](https://asciinema.org/a/Wd4DB0E9J6AFjqQoPGTkkP9xv?autoplay=true)  
 Calc game:  
 [![asciicast](https://asciinema.org/a/fij8pnHtjrnpVzcRO9qUXE2Hp.svg)](https://asciinema.org/a/fij8pnHtjrnpVzcRO9qUXE2Hp?autoplay=true)  
 GCD game:  
