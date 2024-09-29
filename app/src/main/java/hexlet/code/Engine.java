@@ -82,6 +82,11 @@ public class Engine {
             Engine.setUserAnswer(scanner.next());
             // ПРОВЕРКА
             checkAnswer = answers[getCorrectAnswerValue()];
+            if (checkAnswer == true) {
+                correctAnswer = "yes";
+            } else {
+                correctAnswer = "no";
+            }
             answerCheck();
 
         }
