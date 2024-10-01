@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 
 public class Prime {
-    public static boolean isPrime(int number) {
+    private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
 

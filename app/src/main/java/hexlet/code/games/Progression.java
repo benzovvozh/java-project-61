@@ -13,7 +13,7 @@ public class Progression {
     private static final int TEN = 10; // для обозначения шага и стартового числа
 
 
-    public static String arithmeticProgression(int length, int start, int step, int miss) {
+    private static String arithmeticProgression(int length, int start, int step, int miss) {
         String progression; // переменная в которой будет храниться строковое представление прогрессии
         progressionArray = new int[length]; // пустой массив прогрессии случайной длины
         progressionArray[0] = start; // начинаем со случайного значения

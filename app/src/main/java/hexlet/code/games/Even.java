@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 
 public class Even {
-    public static boolean isEven(int randomNumber) {
+    private static boolean isEven(int randomNumber) {
         boolean even;
         if (randomNumber % 2 == 0) {
             even = true;

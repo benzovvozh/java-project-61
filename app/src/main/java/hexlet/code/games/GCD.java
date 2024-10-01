@@ -7,7 +7,7 @@ import hexlet.code.Utils;
 public class GCD {
 
 
-    public static int findGCD(int a, int b) {
+    private static int findGCD(int a, int b) {
         while (b != 0) {
             // Найдём остаток от деления
             int remainder = a % b;
