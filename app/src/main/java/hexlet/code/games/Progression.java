@@ -1,8 +1,9 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 import java.util.Arrays;
-import java.util.Random;
 
 
 public class Progression {
@@ -43,16 +44,16 @@ public class Progression {
 
     public static void progressionGame() {
 
-        Random random = new Random();
+
         System.out.println("What number is missing in the progression?");
         String[] questions = new String[Engine.getMaxRound()];
         String[] answers = new String[Engine.getMaxRound()];
         for (int i = 0; i < Engine.getMaxRound(); i++) {
             //случайная длина прогрессии от 5 до 10
-            int progressionLength = random.nextInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH) + 1;
-            int startNumber = random.nextInt(TEN) + 1; //случайное стартовое число
-            int progressionStep = random.nextInt(TEN) + 1; //случайное число - шаг прогрессии
-            int missingValue = random.nextInt(progressionLength); // номер пропущенного значения
+            int progressionLength = Utils.getRandomInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH);
+            int startNumber = Utils.getRandomInt(0, TEN); //случайное стартовое число
+            int progressionStep = Utils.getRandomInt(0, TEN); //случайное число - шаг прогрессии
+            int missingValue = Utils.getRandomInt(0, progressionLength); // номер пропущенного значения
             questions[i] = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
             answers[i] = String.valueOf(progressionArray[missingValue]);
         }

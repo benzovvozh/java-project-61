@@ -1,6 +1,6 @@
 package hexlet.code;
 
-import java.util.Random;
+
 import java.util.Scanner;
 
 
@@ -16,100 +16,33 @@ public class Engine {
         return MAXRANDOMNUMBER;
     }
 
-    private static String answerUser;
-
-
-    public static int getCorrectAnswerValue() {
-        return correctAnswerValue;
-    }
-
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    private static String correctAnswer;
-
-    public static void setUserAnswer(String userAnswer) {
-        Engine.answerUser = userAnswer;
-    }
-
-    public static void setCorrectAnswer(String theCorrectAnswer) {
-        Engine.correctAnswer = correctAnswer;
-    }
-
-    public static void setCheckAnswer(boolean theCheckAnswer) {
-        Engine.checkAnswer = checkAnswer;
-    }
-
-
-    private static boolean checkAnswer;
-
-    public static boolean isCheckAnswer() {
-        return checkAnswer;
-    }
-
-    private static int correctAnswerValue = 0;
-
-    public static void incorrectAnswer() {
-        System.out.println(answerUser + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
-        System.out.println("Let's try again, " + Cli.getUserName() + "!");
-        System.exit(0);
-    }
-
-    public static int answerCheck() {
-        if ((checkAnswer && answerUser.equals("yes")) || (!checkAnswer && answerUser.equals("no")) // even/prime game
-                || (answerUser.equals(getCorrectAnswer())) // calc/progression game
-                || (answerUser.equals(String.valueOf(getCorrectAnswer())))) { // gcd game
-            System.out.println("Correct!");
-            correctAnswerValue++;
-        } else {
-            Engine.incorrectAnswer();
-        }
-
-        return correctAnswerValue;
-    }
-
-
-    public static void theGame(String[] questions, boolean[] answers) {
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        while (getCorrectAnswerValue() < getMaxRound()) {
-
-            System.out.println("Question: " + questions[getCorrectAnswerValue()]);
-
-            System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
-            // ПРОВЕРКА
-            checkAnswer = answers[getCorrectAnswerValue()];
-            if (checkAnswer) {
-                correctAnswer = "yes";
-            } else {
-                correctAnswer = "no";
-            }
-            answerCheck();
-
-        }
-        if (getCorrectAnswerValue() == getMaxRound()) {
-            System.out.println("Congratulations, " + Cli.getUserName() + "!");
-        }
-    }
 
     public static void theGame(String[] questions, String[] answers) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-        while (getCorrectAnswerValue() < getMaxRound()) {
+        int correctAnswerValue = 0; // количество правильных ответов
+        String correctAnswer; // правильный ответ
+        while (correctAnswerValue < getMaxRound()) {
 
-            System.out.println("Question: " + questions[getCorrectAnswerValue()]);
+            System.out.println("Question: " + questions[correctAnswerValue]);
 
             System.out.print("Your answer: ");
-            Engine.setUserAnswer(scanner.next());
+            String userAnswer = scanner.next();
             // ПРОВЕРКА
-            correctAnswer = answers[getCorrectAnswerValue()];
-            answerCheck();
+            correctAnswer = answers[correctAnswerValue];
+
+            if ((userAnswer.equals(correctAnswer)) || (userAnswer.equals(correctAnswer)) // even/prime game
+                    || (userAnswer.equals(correctAnswer)) // calc/progression game
+                    || (userAnswer.equals(String.valueOf(correctAnswer)))) { // gcd game
+                System.out.println("Correct!");
+                correctAnswerValue++;
+            } else {
+                System.out.println(userAnswer + " is wrong answer ;(. Correct answer was " + "'" + correctAnswer + "'");
+                System.out.println("Let's try again, " + Cli.getUserName() + "!");
+                System.exit(0);
+            }
 
         }
-        if (getCorrectAnswerValue() == getMaxRound()) {
+        if (correctAnswerValue == getMaxRound()) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }

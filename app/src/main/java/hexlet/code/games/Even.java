@@ -1,8 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-
-import java.util.Random;
+import hexlet.code.Utils;
 
 
 public class Even {
@@ -18,20 +17,20 @@ public class Even {
 
 
     public static void evenGame() {
-        Random random = new Random();
+
 
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         // создаем случайные числа-вопросы и записываем их в массив вопросов
         String[] questions = new String[Engine.getMaxRound()];
-        boolean[] answers = new boolean[Engine.getMaxRound()];
+        String[] answers = new String[Engine.getMaxRound()];
         for (int i = 0; i < Engine.getMaxRound(); i++) {
-            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            int randomNumber = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
             questions[i] = String.valueOf(randomNumber);
             if (isEven(Integer.parseInt(questions[i]))) {
-                answers[i] = true;
+                answers[i] = "yes";
             } else {
-                answers[i] = false;
+                answers[i] = "no";
             }
         }
 

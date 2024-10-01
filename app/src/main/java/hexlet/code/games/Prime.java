@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 
 public class Prime {
@@ -22,19 +22,18 @@ public class Prime {
 
 
     public static void primeGame() {
-        Random random = new Random();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         String[] questions = new String[Engine.getMaxRound()];
         for (int i = 0; i < Engine.getMaxRound(); i++) {
-            int randomNumber = random.nextInt(Engine.getMaxRandomNumber()) + 1;
+            int randomNumber = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
             questions[i] = String.valueOf(randomNumber);
         }
-        boolean[] answers = new boolean[Engine.getMaxRound()];
+        String[] answers = new String[Engine.getMaxRound()];
         for (int i = 0; i < Engine.getMaxRound(); i++) {
             if (isPrime(Integer.parseInt(questions[i]))) {
-                answers[i] = true;
+                answers[i] = "yes";
             } else {
-                answers[i] = false;
+                answers[i] = "no";
             }
         }
         Engine.theGame(questions, answers);
