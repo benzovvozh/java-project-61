@@ -53,7 +53,7 @@ public class Progression {
             int progressionLength = Utils.getRandomInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH);
             int startNumber = Utils.getRandomInt(0, TEN); //случайное стартовое число
             int progressionStep = Utils.getRandomInt(0, TEN); //случайное число - шаг прогрессии
-            int missingValue = Utils.getRandomInt(0, progressionLength); // номер пропущенного значения
+            int missingValue = Utils.getRandomInt(0, progressionLength) - 1; // номер пропущенного значения
             questions[i] = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
             answers[i] = String.valueOf(progressionArray[missingValue]);
         }
