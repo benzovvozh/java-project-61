@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 
 
 public class Calc {
-
+    private static final int MAXRANDOMNUMBER = 100;
     private static String operator;
 
     private static int result(int number1, int number2, int step) {
@@ -19,29 +19,28 @@ public class Calc {
             operator = " * ";
             return number1 * number2;
         } else {
-            return 0;
+            return (Integer) null;
         }
     }
 
     public static void calcGame() {
 
         System.out.println("What is the result of the expression?");
-        // создаем массив вопросов
-        String[] questions = new String[Engine.getMaxRound()];
-        // массив ответов
-        String[] answers = new String[Engine.getMaxRound()];
+        String[][] questAndAns = new String[Engine.MAXROUND][2];
         int x = 0;
-        while (x < Engine.getMaxRound()) {
+        while (x < Engine.MAXROUND) {
             // создаем 2 случайных числа
-            int randomNumber = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
-            int randomNumber2 = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
+            int randomNumber = Utils.getRandomInt(0, MAXRANDOMNUMBER);
+            int randomNumber2 = Utils.getRandomInt(0, MAXRANDOMNUMBER);
             // записываем вопросы и правильные ответы в массивы
-            answers[x] = String.valueOf(result(randomNumber, randomNumber2, x));
-            questions[x] = randomNumber + operator + randomNumber2;
+            questAndAns[x][0] = randomNumber + operator + randomNumber2;
+            questAndAns[x][1] = String.valueOf(result(randomNumber, randomNumber2, x));
+
             x++;
         }
 
-        Engine.theGame(questions, answers);
+
+        Engine.theGame(questAndAns);
 
     }
 

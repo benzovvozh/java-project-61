@@ -13,8 +13,8 @@ public class Progression {
     private static final int TEN = 10; // для обозначения шага и стартового числа
 
 
-    private static String arithmeticProgression(int length, int start, int step, int miss) {
-        String progression; // переменная в которой будет храниться строковое представление прогрессии
+    private static int[] arithmeticProgression(int length, int start, int step) {
+
         progressionArray = new int[length]; // пустой массив прогрессии случайной длины
         progressionArray[0] = start; // начинаем со случайного значения
         int x = start;
@@ -24,8 +24,12 @@ public class Progression {
         }
 
 
-        // конвертируем в массив строк
-        String[] stringArray = new String[progressionArray.length];
+        return progressionArray;
+    }
+
+    private static String replacementOfValue(int miss, int[] array) {
+        String[] stringArray = new String[progressionArray.length]; // пустой массив строк
+        String progression; // переменная в которой будет храниться строковое представление прогрессии
         for (int i = 0; i < progressionArray.length; i++) {
             if (i == miss) {
                 stringArray[i] = "..";
@@ -46,18 +50,18 @@ public class Progression {
 
 
         System.out.println("What number is missing in the progression?");
-        String[] questions = new String[Engine.getMaxRound()];
-        String[] answers = new String[Engine.getMaxRound()];
-        for (int i = 0; i < Engine.getMaxRound(); i++) {
+        String[][] questAndAns = new String[Engine.MAXROUND][2];
+        for (int i = 0; i < Engine.MAXROUND; i++) {
             //случайная длина прогрессии от 5 до 10
             int progressionLength = Utils.getRandomInt(MINPROGRESSIONLENGTH, MAXPROGRESSIONLENGTH);
             int startNumber = Utils.getRandomInt(0, TEN); //случайное стартовое число
             int progressionStep = Utils.getRandomInt(0, TEN); //случайное число - шаг прогрессии
             int missingValue = Utils.getRandomInt(0, progressionLength) - 1; // номер пропущенного значения
-            questions[i] = arithmeticProgression(progressionLength, startNumber, progressionStep, missingValue);
-            answers[i] = String.valueOf(progressionArray[missingValue]);
+            int[] array = arithmeticProgression(progressionLength, startNumber, progressionStep);
+            questAndAns[i][0] = replacementOfValue(missingValue, array);
+            questAndAns[i][1] = String.valueOf(array[missingValue]);
         }
-        Engine.theGame(questions, answers);
+        Engine.theGame(questAndAns);
     }
 
 }

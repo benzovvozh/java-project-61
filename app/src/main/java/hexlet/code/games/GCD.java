@@ -5,6 +5,7 @@ import hexlet.code.Utils;
 
 
 public class GCD {
+    private static final int MAXRANDOMNUMBER = 100;
 
 
     private static int findGCD(int a, int b) {
@@ -24,15 +25,15 @@ public class GCD {
 
 
         System.out.println("Find the greatest common divisor of given numbers.");
-        String[] questions = new String[Engine.getMaxRound()];
-        String[] answers = new String[Engine.getMaxRound()];
-        for (int i = 0; i < Engine.getMaxRound(); i++) {
-            int randomNumber = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
-            int randomNumber2 = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
-            questions[i] = randomNumber + " " + randomNumber2;
-            answers[i] = String.valueOf(findGCD(randomNumber, randomNumber2));
+
+        String[][] questAndAns = new String[Engine.MAXROUND][2];
+        for (int i = 0; i < Engine.MAXROUND; i++) {
+            int randomNumber1 = Utils.getRandomInt(0, MAXRANDOMNUMBER);
+            int randomNumber2 = Utils.getRandomInt(0, MAXRANDOMNUMBER);
+            questAndAns[i][0] = randomNumber1 + " " + randomNumber2;
+            questAndAns[i][1] = String.valueOf(findGCD(randomNumber1, randomNumber2));
         }
-        Engine.theGame(questions, answers);
+        Engine.theGame(questAndAns);
     }
 }
 

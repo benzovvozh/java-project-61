@@ -5,6 +5,8 @@ import hexlet.code.Utils;
 
 
 public class Prime {
+    private static final int MAXRANDOMNUMBER = 100;
+
     private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
@@ -23,20 +25,17 @@ public class Prime {
 
     public static void primeGame() {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        String[] questions = new String[Engine.getMaxRound()];
-        for (int i = 0; i < Engine.getMaxRound(); i++) {
-            int randomNumber = Utils.getRandomInt(0, Engine.getMaxRandomNumber());
-            questions[i] = String.valueOf(randomNumber);
-        }
-        String[] answers = new String[Engine.getMaxRound()];
-        for (int i = 0; i < Engine.getMaxRound(); i++) {
-            if (isPrime(Integer.parseInt(questions[i]))) {
-                answers[i] = "yes";
+        String[][] questAndAns = new String[Engine.MAXROUND][2];
+        for (int i = 0; i < Engine.MAXROUND; i++) {
+            int randomNumber = Utils.getRandomInt(0, MAXRANDOMNUMBER);
+            questAndAns[i][0] = String.valueOf(randomNumber);
+            if (isPrime(Integer.parseInt(questAndAns[i][0]))) {
+                questAndAns[i][1] = "yes";
             } else {
-                answers[i] = "no";
+                questAndAns[i][1] = "no";
             }
         }
-        Engine.theGame(questions, answers);
+        Engine.theGame(questAndAns);
     }
 
 

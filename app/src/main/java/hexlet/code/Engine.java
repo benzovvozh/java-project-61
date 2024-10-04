@@ -5,30 +5,20 @@ import java.util.Scanner;
 
 
 public class Engine {
-    public static int getMaxRound() {
-        return MAXROUND;
-    }
+    public static final int MAXROUND = 3;
 
-    private static final int MAXROUND = 3;
-    private static final int MAXRANDOMNUMBER = 100;
-
-    public static int getMaxRandomNumber() {
-        return MAXRANDOMNUMBER;
-    }
-
-
-    public static void theGame(String[] questions, String[] answers) {
+    public static void theGame(String[][] questionsAndAnswers) {
         Scanner scanner = new Scanner(System.in);
         int correctAnswerValue = 0; // количество правильных ответов
         String correctAnswer; // правильный ответ
-        while (correctAnswerValue < getMaxRound()) {
+        while (correctAnswerValue < MAXROUND) {
 
-            System.out.println("Question: " + questions[correctAnswerValue]);
+            System.out.println("Question: " + questionsAndAnswers[correctAnswerValue][0]);
 
             System.out.print("Your answer: ");
             String userAnswer = scanner.next();
             // ПРОВЕРКА
-            correctAnswer = answers[correctAnswerValue];
+            correctAnswer = questionsAndAnswers[correctAnswerValue][1];
 
             if ((userAnswer.equals(correctAnswer)) || (userAnswer.equals(correctAnswer)) // even/prime game
                     || (userAnswer.equals(correctAnswer)) // calc/progression game
@@ -42,7 +32,7 @@ public class Engine {
             }
 
         }
-        if (correctAnswerValue == getMaxRound()) {
+        if (correctAnswerValue == MAXROUND) {
             System.out.println("Congratulations, " + Cli.getUserName() + "!");
         }
     }
