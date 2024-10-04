@@ -19,7 +19,7 @@ public class Calc {
             operator = " * ";
             return number1 * number2;
         } else {
-            return (Integer) null;
+            throw new IllegalArgumentException("Ошибка");
         }
     }
 
@@ -33,8 +33,9 @@ public class Calc {
             int randomNumber = Utils.getRandomInt(0, MAXRANDOMNUMBER);
             int randomNumber2 = Utils.getRandomInt(0, MAXRANDOMNUMBER);
             // записываем вопросы и правильные ответы в массивы
-            questAndAns[x][0] = randomNumber + operator + randomNumber2;
             questAndAns[x][1] = String.valueOf(result(randomNumber, randomNumber2, x));
+            questAndAns[x][0] = randomNumber + operator + randomNumber2;
+
 
             x++;
         }
